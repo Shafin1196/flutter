@@ -33,4 +33,17 @@ class DbHelper {
   return mapList.map((row)=>ContactModel.fromMap(row)).toList();
 
  }
+ Future<int> deleteContact(int id)async{
+  final db =await _open();
+  return db.delete(tableContact,where:'$tableContactColId = ?',whereArgs: [id]);
+ }
+ Future<int> updateFavorite(int id,int value)async{
+  final db =await _open();
+  return db.update(tableContact, {tableContactColFavorite:value,},where: "$tableContactColId=?",whereArgs: [id]);
+ }
+ Future<ContactModel> getContactById(int id)async{
+  final db =await _open();
+  final map=await db.query(tableContact,where:"$tableContactColId = ?",whereArgs: [id]);
+  return ContactModel.fromMap(map.first);
+ }
 }

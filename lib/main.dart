@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 // import 'package:providerss/projectHurdel/word_hurdle_page.dart';
 // import 'package:providerss/riverpod/dart_data_generator/pages/user_list_page.dart';
 import 'package:providerss/v_card/models/contact_model.dart';
+import 'package:providerss/v_card/pages/contact_details_page.dart';
 import 'package:providerss/v_card/pages/form_page.dart';
 import 'package:providerss/v_card/pages/home_page.dart';
 import 'package:providerss/v_card/pages/scan_page.dart';
@@ -42,6 +43,11 @@ class MyApp extends StatelessWidget {
         path: HomePage.routeName,
         builder: (context,state)=> const HomePage(),
         routes: [
+          GoRoute(
+            name: ContactDetailsPage.routeName,
+            path: ContactDetailsPage.routeName,
+            builder: (context, state) => ContactDetailsPage(id: state.extra! as int),
+          ),
           GoRoute(
             name: ScanPage.routeName,
             path: ScanPage.routeName,
